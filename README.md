@@ -7,3 +7,6 @@
 4. #2.2 Adapting and Extending
 5. #2.3 'As' and Attrs
 6. #2.4 Animations and Pseudo Selectors
+7. #2.5 Pseudo Selectors part Two
+8. #2.6 Super Recap
+9. #2.7 Themes
