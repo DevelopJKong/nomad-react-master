@@ -1,10 +1,29 @@
-import Circle from "./Circle";
+import React, { useState } from "react";
 
 function App() {
+  const [value, setValue] = useState("");
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const {
+      currentTarget: { value },
+    } = event;
+    setValue(value);
+  };
+
+  const onSumbit= (event:React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("hello",value);
+  };
   return (
     <div>
-      <Circle borderColor="yellow" bgColor="teal"/>
-      <Circle text="im here" bgColor="tomato"/>
+      <form onSubmit={onSumbit}>
+        <input
+          type="text"
+          placeholder="username"
+          value={value}
+          onChange={onChange}
+        />
+        <button >Log in</button>
+      </form>
     </div>
   );
 }
