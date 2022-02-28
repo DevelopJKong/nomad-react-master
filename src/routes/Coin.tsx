@@ -21,15 +21,7 @@ interface RouteState {
   name: string;
 }
 
-interface CoinInterface {
-  id: string;
-  name: string;
-  symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
-}
+
 
 interface InfoData {
   id: string;
@@ -158,11 +150,9 @@ const Tab = styled.span<{ isActive: boolean }>`
   }
 `;
 
-interface ICoinProps {
-  isDark: boolean;
-}
+interface ICoinProps {}
 
-function Coin({ isDark }: ICoinProps) {
+function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -236,7 +226,7 @@ function Coin({ isDark }: ICoinProps) {
                 <Price />
               </Route>
               <Route path={`/:coinId/chart`}>
-                <Chart isDark={isDark} coinId={coinId} />
+                <Chart coinId={coinId} />
               </Route>
             </Switch>
           </>
