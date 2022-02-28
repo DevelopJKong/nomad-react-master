@@ -158,7 +158,11 @@ const Tab = styled.span<{ isActive: boolean }>`
   }
 `;
 
-function Coin() {
+interface ICoinProps {
+  isDark: boolean;
+}
+
+function Coin({ isDark }: ICoinProps) {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -171,7 +175,7 @@ function Coin() {
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
-      refetchInterval:5000,
+      refetchInterval: 5000,
     }
   );
   const loading = infoLoading || tickersLoading;
@@ -180,7 +184,7 @@ function Coin() {
       <Container>
         <Helmet>
           <title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
           </title>
         </Helmet>
         <Header>
@@ -232,7 +236,7 @@ function Coin() {
                 <Price />
               </Route>
               <Route path={`/:coinId/chart`}>
-                <Chart coinId={coinId} />
+                <Chart isDark={isDark} coinId={coinId} />
               </Route>
             </Switch>
           </>
