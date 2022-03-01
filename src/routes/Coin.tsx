@@ -150,7 +150,6 @@ const Tab = styled.span<{ isActive: boolean }>`
   }
 `;
 
-interface ICoinProps {}
 
 function Coin() {
   const { coinId } = useParams<RouteParams>();
