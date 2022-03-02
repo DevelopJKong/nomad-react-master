@@ -67,7 +67,6 @@ a {
 `;
 
 function App() {
- 
   return (
     <>
       <GlobalStyle />
@@ -75,5 +74,5 @@ function App() {
     </>
   );
 }
-//isDark: App -> Router -> Coin -> Chart
+
 export default App;
