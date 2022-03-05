@@ -1,12 +1,10 @@
 import { atom, selector } from "recoil";
 
-
 export enum Categories {
   "TO_DO" = "TO_DO",
   "DOING" = "DOING",
-  "DONE" = "DONE"
+  "DONE" = "DONE",
 }
-
 
 export interface IToDo {
   text: string;
@@ -19,9 +17,13 @@ export const categoryState = atom<Categories>({
   default: Categories.TO_DO,
 });
 
-export const toDoState = atom<IToDo[]>({
+//코드챌린지
+let output = localStorage.getItem("toDos");
+let localData = JSON.parse(output as any);
+
+export const toDoState = atom({
   key: "toDo",
-  default: [],
+  default: localData,
 });
 
 export const toDoSelector = selector({
@@ -29,6 +31,6 @@ export const toDoSelector = selector({
   get: ({ get }) => {
     const toDos = get(toDoState);
     const category = get(categoryState);
-    return toDos.filter((toDo) => toDo.category === category);
+    return toDos.filter((toDo: { category: Categories; }) => toDo.category === category);
   },
 });
