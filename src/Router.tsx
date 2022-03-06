@@ -5,7 +5,6 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <Route path="/">
-          <div>hi</div>
         </Route>
       </Switch>
     </BrowserRouter>
