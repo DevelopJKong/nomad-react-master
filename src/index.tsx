@@ -8,9 +8,9 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-    <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
         <App />
-    </QueryClientProvider>
+      </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
