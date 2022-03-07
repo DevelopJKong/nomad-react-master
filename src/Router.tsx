@@ -6,7 +6,7 @@ function Router() {
     <BrowserRouter>
       <Switch>
         <Route path="/nomad-react-master">
-          <App/>
+          <App />
         </Route>
       </Switch>
     </BrowserRouter>
