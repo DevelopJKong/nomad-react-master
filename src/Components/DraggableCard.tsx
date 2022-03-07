@@ -4,6 +4,8 @@ import styled from "styled-components";
 const Card = styled.div`
   background-color: ${(props) => props.theme.cardColor};
   padding: 5px 10px;
+  margin-bottom:10px;
+
 `;
 
 interface IDraggableCardProps {
