@@ -4,6 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { createGlobalStyle } from "styled-components";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
@@ -38,7 +39,11 @@ footer, header, hgroup, main, menu, nav, section {
     display: none;
 }
 body {
-  line-height: 1;
+  font-weight:300;
+  font-family:'Source Sans Pro', sans-serif;
+  color:${(props) => props.theme.white.darker};
+  line-height: 1.2;
+  background-color:black;
 }
 menu, ol, ul {
   list-style: none;
@@ -70,13 +75,18 @@ a {
   color:inherit;
 }
 `;
+
+const client = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
+      <QueryClientProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+      </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
