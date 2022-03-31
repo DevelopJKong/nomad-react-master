@@ -15,6 +15,13 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position:relative;
+  button {
+    position: absolute;
+    right:calc(25% + 10px);
+    background-color:white;
+    border-radius:2.2222em;
+  }
 `;
 
 const CoinsList = styled.ul`
@@ -25,7 +32,7 @@ const CoinsList = styled.ul`
 `;
 
 const Coin = styled.li`
-  background-color: white;
+  background-color: ${props => props.theme.bgColorReverse};
   color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
@@ -89,8 +96,8 @@ function Coins() {
       {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
-        <CoinsList>
-          {data?.slice(0, 100).map((coin) => (
+    <CoinsList>
+          {data?.slice(0,100).map((coin) => (
             <Coin key={coin.id}>
               <Link
                 to={{

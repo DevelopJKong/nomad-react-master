@@ -116,6 +116,14 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position:relative;
+  a {
+    position:absolute;
+    right:calc(0% + 10px);
+    background-color: rgba(0,0,0,0.5);
+    border-radius:2.22222em;
+    padding: 5px 20px;
+  }
 `;
 
 const Title = styled.h1`
@@ -180,6 +188,7 @@ function Coin() {
           <Title>
             {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
           </Title>
+            <Link to={`/`}>Home</Link>
         </Header>
         {loading ? (
           <Loader>Loading...</Loader>
@@ -222,7 +231,7 @@ function Coin() {
 
             <Switch>
               <Route path={`/:coinId/price`}>
-                <Price />
+                <Price coinId={coinId} />
               </Route>
               <Route path={`/:coinId/chart`}>
                 <Chart coinId={coinId} />
