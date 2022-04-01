@@ -188,7 +188,7 @@ function Coin() {
           <Title>
             {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
           </Title>
-            <Link to={`/`}>Home</Link>
+            <Link to={`/coinproject`}>Home</Link>
         </Header>
         {loading ? (
           <Loader>Loading...</Loader>
@@ -222,18 +222,18 @@ function Coin() {
 
             <Tabs>
               <Tab isActive={chartMatch !== null}>
-                <Link to={`/${coinId}/chart`}>Chart</Link>
+                <Link to={`/coinproject/${coinId}/chart`}>Chart</Link>
               </Tab>
               <Tab isActive={priceMatch !== null}>
-                <Link to={`/${coinId}/price`}>Price</Link>
+                <Link to={`/coinproject/${coinId}/price`}>Price</Link>
               </Tab>
             </Tabs>
 
             <Switch>
-              <Route path={`/:coinId/price`}>
+              <Route path={`/coinproject/:coinId/price`}>
                 <Price coinId={coinId} />
               </Route>
-              <Route path={`/:coinId/chart`}>
+              <Route path={`/coinproject/:coinId/chart`}>
                 <Chart coinId={coinId} />
               </Route>
             </Switch>
