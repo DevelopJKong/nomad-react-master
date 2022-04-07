@@ -5,7 +5,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/">
+        <Route path="/todo">
           <ToDoList />
         </Route>
       </Switch>

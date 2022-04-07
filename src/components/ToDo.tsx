@@ -18,6 +18,7 @@ function ToDo({ text, category, id }: IToDo) {
       ];
     });
   };
+  
   const onDeleteToDo = () => {
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
