@@ -116,6 +116,14 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position:relative;
+  a {
+    position:absolute;
+    right:calc(0% + 10px);
+    background-color: rgba(0,0,0,0.5);
+    border-radius:2.22222em;
+    padding: 5px 20px;
+  }
 `;
 
 const Title = styled.h1`
@@ -180,6 +188,7 @@ function Coin() {
           <Title>
             {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
           </Title>
+            <Link to={`/nomad-react-master`}>Home</Link>
         </Header>
         {loading ? (
           <Loader>Loading...</Loader>
@@ -213,18 +222,18 @@ function Coin() {
 
             <Tabs>
               <Tab isActive={chartMatch !== null}>
-                <Link to={`/${coinId}/chart`}>Chart</Link>
+                <Link to={`/nomad-react-master/${coinId}/chart`}>Chart</Link>
               </Tab>
               <Tab isActive={priceMatch !== null}>
-                <Link to={`/${coinId}/price`}>Price</Link>
+                <Link to={`/nomad-react-master/${coinId}/price`}>Price</Link>
               </Tab>
             </Tabs>
 
             <Switch>
-              <Route path={`/:coinId/price`}>
-                <Price />
+              <Route path={`/nomad-react-master/:coinId/price`}>
+                <Price coinId={coinId} />
               </Route>
-              <Route path={`/:coinId/chart`}>
+              <Route path={`/nomad-react-master/:coinId/chart`}>
                 <Chart coinId={coinId} />
               </Route>
             </Switch>
