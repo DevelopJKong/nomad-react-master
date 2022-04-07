@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/coinproject/static/js/main.526b0b9b.js",
-    "index.html": "/coinproject/index.html",
-    "main.526b0b9b.js.map": "/coinproject/static/js/main.526b0b9b.js.map"
+    "main.js": "/todor/static/js/main.c5ee5a40.js",
+    "index.html": "/todor/index.html",
+    "main.c5ee5a40.js.map": "/todor/static/js/main.c5ee5a40.js.map"
   },
   "entrypoints": [
-    "static/js/main.526b0b9b.js"
+    "static/js/main.c5ee5a40.js"
   ]
 }
