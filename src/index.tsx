@@ -1,31 +1,10 @@
-import React from "react";
-<<<<<<< HEAD
-import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "react-query";
-=======
-import ReactDOM from "react-dom";
->>>>>>> 4ac5969eb9cfce59584e10f76d337c132a8108b9
-import { RecoilRoot } from "recoil";
-import { ThemeProvider } from "styled-components";
-import App from "./App";
-<<<<<<< HEAD
-const queryClient = new QueryClient();
-
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </RecoilRoot>
-  </React.StrictMode>
-);
-=======
-import { darkTheme } from "./theme";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { RecoilRoot } from 'recoil';
+import { ThemeProvider } from 'styled-components';
+import App from './App';
+import { darkTheme } from './theme';
+import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
@@ -99,6 +78,5 @@ ReactDOM.render(
       </ThemeProvider>
     </RecoilRoot>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
->>>>>>> 4ac5969eb9cfce59584e10f76d337c132a8108b9
