@@ -1,16 +1,12 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Coin from "./routes/Coin";
-import Coins from "./routes/Coins";
+import App from "./App";
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/nomad-react-master/:coinId">
-          <Coin />
-        </Route>
-        <Route path="/nomad-react-master/">
-          <Coins />
+        <Route path="/nomad-react-master">
+          <App />
         </Route>
       </Switch>
     </BrowserRouter>
