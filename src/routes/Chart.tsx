@@ -19,21 +19,18 @@ interface ChartProps {
 }
 function Chart({ coinId }: ChartProps) {
   const isDark = useRecoilValue(isDarkAtom);
-  const { isLoading, data } = useQuery<IHistorical[]>(
-    ["ohlcv", coinId],
-    () => fetchCoinHistory(coinId),
-    {
-      refetchInterval: 10000,
-    }
-  );
+  const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () => fetchCoinHistory(coinId), {
+    refetchInterval: 10000,
+  });
   return (
     <div>
       {isLoading ? (
         "Loading chart..."
       ) : (
         <ReactApexChart
-          type="line"
+          type='line'
           series={[
+            //@ts-ignore
             {
               name: "Price",
               data: data?.map((price) => price.close),

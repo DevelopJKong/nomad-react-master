@@ -20,67 +20,54 @@ interface PriceProps {
 
 function Price({ coinId }: PriceProps) {
   const isDark = useRecoilValue(isDarkAtom);
-  const { isLoading, data } = useQuery<IHistorical[]>(
-    ["price", coinId],
-    () => fetchCoinHistory(coinId),
-    {
-      refetchInterval: 2000,
-    }
-  );
+  const { isLoading, data } = useQuery<IHistorical[]>(["price", coinId], () => fetchCoinHistory(coinId), {
+    refetchInterval: 2000,
+  });
   return (
     <div>
       {isLoading ? (
         "Loading price..."
       ) : (
         <ReactApexChart
-          type="candlestick"
+          type='candlestick'
           series={[
+            //@ts-ignore
             {
-              data: 
-                data?.map((price) => {
-                  return [
-                    Date.parse(price.time_close),
-                    price.open,
-                    price.high,
-                    price.low,
-                    price.close,
-                  ];
-                }),
+              data: data?.map((price) => {
+                return [Date.parse(price.time_close), price.open, price.high, price.low, price.close];
+              }),
             },
           ]}
-          options={ {
-              theme: {
-                mode: isDark ? "dark" : "light"
-              },
-              chart: {
-                type:"candlestick",
-                height:300,
-                width:500,
-                toolbar: {
-                  show:false,
-                },
-                background: "transparent",
-              },
-              stroke: {
-                curve: "smooth",
-                width: 5,
-              },
-              yaxis: {
+          options={{
+            theme: {
+              mode: isDark ? "dark" : "light",
+            },
+            chart: {
+              type: "candlestick",
+              height: 300,
+              width: 500,
+              toolbar: {
                 show: false,
               },
-              xaxis: {
-                type: "datetime",
-                categories: data?.map((price) => price.time_close),
-                labels: {
-                  style: {
-                    colors: '#fdcb6e'
-                  }
-                }
-              }
-                
-             
-          }
-          }
+              background: "transparent",
+            },
+            stroke: {
+              curve: "smooth",
+              width: 5,
+            },
+            yaxis: {
+              show: false,
+            },
+            xaxis: {
+              type: "datetime",
+              categories: data?.map((price) => price.time_close),
+              labels: {
+                style: {
+                  colors: "#fdcb6e",
+                },
+              },
+            },
+          }}
         />
       )}
     </div>

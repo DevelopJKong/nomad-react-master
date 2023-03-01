@@ -1,11 +1,5 @@
 import { useQuery } from "react-query";
-import {
-  Route,
-  Switch,
-  useLocation,
-  useParams,
-  useRouteMatch,
-} from "react-router";
+import { Route, Switch, useLocation, useParams, useRouteMatch } from "react-router";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -20,8 +14,6 @@ interface RouteParams {
 interface RouteState {
   name: string;
 }
-
-
 
 interface InfoData {
   id: string;
@@ -116,12 +108,12 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  position:relative;
+  position: relative;
   a {
-    position:absolute;
-    right:calc(0% + 10px);
-    background-color: rgba(0,0,0,0.5);
-    border-radius:2.22222em;
+    position: absolute;
+    right: calc(0% + 10px);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 2.22222em;
     padding: 5px 20px;
   }
 `;
@@ -151,44 +143,35 @@ const Tab = styled.span<{ isActive: boolean }>`
   background-color: rgba(0, 0, 0, 0.5);
   padding: 7px 0px;
   border-radius: 10px;
-  color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+  color: ${(props) => (props.isActive ? props.theme.accentColor : props.theme.textColor)};
   a {
     display: block;
   }
 `;
-
 
 function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
-  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
-    ["info", coinId],
-    () => fetchCoinInfo(coinId)
-  );
+  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(["info", coinId], () => fetchCoinInfo(coinId));
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ["tickers", coinId],
     () => fetchCoinTickers(coinId),
     {
       refetchInterval: 5000,
-    }
+    },
   );
   const loading = infoLoading || tickersLoading;
   return (
     <ContainerWrapper>
       <Container>
         <Helmet>
-          <title>
-            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-          </title>
+          <title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</title>
         </Helmet>
         <Header>
-          <Title>
-            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-          </Title>
-            <Link to={`/coinproject`}>Home</Link>
+          <Title>{state?.name ? state.name : loading ? "Loading..." : infoData?.name}</Title>
+          <Link to={`/coin-project`}>Home</Link>
         </Header>
         {loading ? (
           <Loader>Loading...</Loader>
@@ -222,18 +205,18 @@ function Coin() {
 
             <Tabs>
               <Tab isActive={chartMatch !== null}>
-                <Link to={`/coinproject/${coinId}/chart`}>Chart</Link>
+                <Link to={`/coin-project/${coinId}/chart`}>Chart</Link>
               </Tab>
               <Tab isActive={priceMatch !== null}>
-                <Link to={`/coinproject/${coinId}/price`}>Price</Link>
+                <Link to={`/coin-project/${coinId}/price`}>Price</Link>
               </Tab>
             </Tabs>
 
             <Switch>
-              <Route path={`/coinproject/:coinId/price`}>
+              <Route path={`/coin-project/:coinId/price`}>
                 <Price coinId={coinId} />
               </Route>
-              <Route path={`/coinproject/:coinId/chart`}>
+              <Route path={`/coin-project/:coinId/chart`}>
                 <Chart coinId={coinId} />
               </Route>
             </Switch>

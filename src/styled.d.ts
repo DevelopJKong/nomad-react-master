@@ -4,7 +4,7 @@ declare module "styled-components" {
   export interface DefaultTheme {
     textColor: string;
     bgColor: string;
-    bgColorReverse:string;
+    bgColorReverse: string;
     accentColor: string;
   }
 }
